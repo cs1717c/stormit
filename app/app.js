@@ -1,14 +1,26 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
+angular.module('stormit', [
+  'ui.router',
 ]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+config(function($stateProvider) {
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+  var personalInfoState = {
+    name: 'personalInfo',
+    url: '/personalInfo',
+    templateUrl: 'personalInfoView/personalInfoView.html',
+    controller: 'PersonalInfoCtrl'
+  }
+
+  var foodDiaryState = {
+    name: 'foodDiary',
+    url: '/foodDiary',
+    templateUrl: 'foodDiaryView/foodDiaryView.html',
+    controller: 'FoodDiaryCtrl'
+  }
+
+  $stateProvider.state(personalInfoState);
+  $stateProvider.state(foodDiaryState);
+
+});

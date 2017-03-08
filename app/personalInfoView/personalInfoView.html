@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+        <h2>Daily Calorie Calculator</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <form method="put">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="text" class="form-control" name="age" id="age" ng-model="age" placeholder="(Years)"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="sex">Sex</label>
+                    <div class="input-group" data-toggle="buttons">
+                        <label class="btn btn-default active"><input type="radio" ng-model="sex" value="male"
+                                                                     checked="checked">Male</label>
+                        <label class="btn btn-default"><input type="radio" ng-model="sex"  value="female">Female</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Weight (kg)</label>
+                    <input type="text" class="form-control" name="weight" id="weight" ng-model="weight"
+                           placeholder="(kg)" required>
+                </div>
+                <div class="form-group">
+                    <label>Height (cm)</label>
+                    <input type="text" class="form-control" name="inches" id="inches" ng-model="height"
+                           placeholder="(cm)" required>
+                </div>
+                <div class="form-group">
+                    <label>Activity Level</label>
+                    <select class="form-control" ng-options="x as x.name for x in activities"
+                            ng-model="selectedActivity">
+                        <option value="">Select activity level...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Choose Goal:</label>
+                    <select class="form-control" ng-options="x as x.name for x in goals" ng-model="selectedGoal">
+                        <option value="">Select your goal...</option>
+                    </select>
+
+                    <div class="form-group" ng-show="showCalAmount">
+                        <div class="alert alert-success cal-results">
+                            <h4>Daily Calories:<br/><strong><span id="calAmount" 1>{{dailyCals}}</span></strong>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="modal-footer">
+                            <button class="btn btn-danger" ng-click="resetForm()">Reset</button>
+                            <button type="button" id="calculate" name="calculate" class="btn btn-primary"
+                                    ng-click="calcDailyCals()">Calculate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </form>
+    </div>
+</div>
